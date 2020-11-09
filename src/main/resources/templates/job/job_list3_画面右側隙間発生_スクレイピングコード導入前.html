@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<title>求人一覧</title>
+</head>
+<body>
+	<span th:include="/common/fragment-part::frag_header_after_login"></span>
+	
+	<div class="main">
+		<div class="container text-center">
+
+			<h3 class="my-5">求人一覧</h3>
+
+			<form th:action="@{/finish}" method="post">
+			
+				<div class="form-row text-left">
+					<div class="form-group col-md-6">
+						<label for="siteName">求人サイト</label> 
+						<select name=”siteName” id="siteName" class="form-control">
+							<option value=”en”>en転職</option>
+							<option value=”careertrek”>キャリトレ</option>
+							<option value=”geekly”>Geekly</option>
+							<option value=”green”>Green</option>
+							<option value=”type”>type</option>
+							<option value=”doda”>doda</option>
+							<option value=”mynavi”>マイナビ転職</option>
+							<option value=”rikunabi”>リクナビNEXT</option>
+						</select>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="inputPassword4">言語</label> 
+						<label for="siteName"><span th:text="${choiedLanguage}"></span></label> 
+							<select name=”codingLanguages” id="select1a" class="form-control">
+								<option value=”java”>Java</option>
+								<option value=”ruby”>Ruby</option>
+								<option value=”php”>PHP</option>
+								<option value=”c++”>C++</option>
+								<option value=”c#”>C#</option>
+								<option value=”cobol”>COBOL</option>
+								<option value=”go”>Go</option>
+								<option value=”kotlin”>Kotlin</option>
+								<option value=”perl”>Perl</option>
+								<option value=”python”>Python</option>
+								<option value=”r”>R</option>
+								<option value=”scala”>Scala</option>
+								<option value=”swift”>Swift</option>
+								<option value=”typeScript”>TypeScript</option>
+							</select>
+					</div>
+				</div>
+					<button class="btn btn-primary" type="submit">検索</button>
+					<div class="btn btn-primary">CSV出力</div>
+			</form>
+
+			<nav aria-label="ページ送りの実例">
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">前へ</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">次へ</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="row">
+			<div class="mx-auto">
+				<div style="width: 70rem; background-color: #f6f6f6; border: 1px solid #dee2e6;">
+
+					<table class="table table-hover" style="cursor: pointer;">
+						<tbody id="addSearchUser">
+							<tr class="bg-white">
+								<th>サイト名</th>
+								<th>企業名</th>
+								<th>募集職種</th>
+								<th>言語</th>
+								<th>所在地</th>
+								<th>電話番号</th>
+								<th>事業内容</th>
+								<th>求人URL</th>
+								<th>取得日</th>
+								<th>更新日</th>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+							<tr>
+								<td>マイナビ</td>
+								<td><a href="">会社A</a></td>
+								<td>システム開発</td>
+								<td>Java</td>
+								<td>東京</td>
+								<td>00-1111-2222</td>
+								<td>IoTサービス</td>
+								<td>https://</td>
+								<td>2020/10/01</td>
+								<td>2020/10/11</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>
