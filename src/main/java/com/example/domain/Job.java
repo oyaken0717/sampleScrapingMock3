@@ -1,7 +1,5 @@
 package com.example.domain;
 
-import java.util.Date;
-
 public class Job {
 	
 	private Integer id;
@@ -22,9 +20,7 @@ public class Job {
 	
 	private String url;
 	
-	private Date acquisitionDate;
-	
-	private Date updateDate;
+	private String published;
 
 	public Integer getId() {
 		return id;
@@ -98,30 +94,19 @@ public class Job {
 		this.url = url;
 	}
 
-	public Date getAcquisitionDate() {
-		return acquisitionDate;
+	public String getPublished() {
+		return published;
 	}
 
-	public void setAcquisitionDate(Date acquisitionDate) {
-		this.acquisitionDate = acquisitionDate;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+	public void setPublished(String published) {
+		this.published = published;
 	}
 
 	@Override
 	public String toString() {
 		return "Job [id=" + id + ", siteName=" + siteName + ", companyName=" + companyName + ", jobType=" + jobType
 				+ ", codingLanguages=" + codingLanguages + ", location=" + location + ", phoneNumber=" + phoneNumber
-				+ ", businessDetails=" + businessDetails + ", url=" + url + ", acquisitionDate=" + acquisitionDate
-				+ ", updateDate=" + updateDate + "]";
+				+ ", businessDetails=" + businessDetails + ", url=" + url + ", published=" + published + "]";
 	}
 	
-	
-
 }

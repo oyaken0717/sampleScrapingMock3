@@ -16,46 +16,47 @@
 
 			<h3 class="my-5">求人一覧</h3>
 
-			<form th:action="@{/finish}" method="post" class="mb-3">
+			<form th:action="@{/job-list/to-job-list}" method="post" class="mb-3">
 			
 				<div class="form-row text-left">
 					<div class="form-group col-md-6">
 						<label for="siteName">求人サイト</label> 
-						<select name=”siteName” id="siteName" class="form-control">
-							<option value=”en”>en転職</option>
-							<option value=”careertrek”>キャリトレ</option>
-							<option value=”geekly”>Geekly</option>
-							<option value=”green”>Green</option>
-							<option value=”type”>type</option>
-							<option value=”doda”>doda</option>
-							<option value=”mynavi”>マイナビ転職</option>
-							<option value=”rikunabi”>リクナビNEXT</option>
+ 						<select name=”siteNumber” id="siteName" class="form-control">
+							<option id=”en”         value=”1”>エン転職</option>
+							<option id=”careertrek” value=”2”>キャリトレ</option>
+							<option id=”geekly”     value=”3”>Geekly</option>
+							<option id=”green”      value=”4”>Green</option>
+							<option id=”type”       value=”5”>type</option>
+							<option id=”doda”       value=”6”>doda</option>
+							<option id=”mynavi”     value=”7”>マイナビ転職</option>
+							<option id=”rikunabi”   value=”8”>リクナビNEXT</option>
 						</select>
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label for="inputPassword4">言語</label> 
-						<label for="siteName"><span th:text="${choiedLanguage}"></span></label> 
-							<select name=”codingLanguages” id="select1a" class="form-control">
-								<option value=”java”>Java</option>
-								<option value=”ruby”>Ruby</option>
-								<option value=”php”>PHP</option>
-								<option value=”c++”>C++</option>
-								<option value=”c#”>C#</option>
-								<option value=”cobol”>COBOL</option>
-								<option value=”go”>Go</option>
-								<option value=”kotlin”>Kotlin</option>
-								<option value=”perl”>Perl</option>
-								<option value=”python”>Python</option>
-								<option value=”r”>R</option>
-								<option value=”scala”>Scala</option>
-								<option value=”swift”>Swift</option>
-								<option value=”typeScript”>TypeScript</option>
-							</select>
+						<label for="codingLanguages">言語</label> 
+						<select name=”codingLanguageNumber” id="codingLanguages" class="form-control">
+							<option id=”java”       value=”1”>Java</option>
+							<option id=”ruby”       value=”2”>Ruby</option>
+							<option id=”php”        value=”3”>PHP</option>
+							<option id=”c++”        value=”4”>C++</option>
+							<option id=”c#”         value=”5”>C#</option>
+							<option id=”cobol”      value=”6”>COBOL</option>
+							<option id=”go”         value=”7”>Go</option>
+							<option id=”kotlin”     value=”8”>Kotlin</option>
+							<option id=”perl”       value=”9”>Perl</option>
+							<option id=”python”     value=”10”>Python</option>
+							<option id=”r”          value=”11”>R</option>
+							<option id=”scala”      value=”12”>Scala</option>
+							<option id=”swift”      value=”13”>Swift</option>
+							<option id=”typeScript” value=”14”>TypeScript</option>
+						</select>
 					</div>
 				</div>
+				
 					<button class="btn btn-primary" type="submit">検索</button>
 					<div class="btn btn-primary">CSV出力</div>
+					
 			</form>
 
 			<nav aria-label="ページ送りの実例">
@@ -67,49 +68,45 @@
 					<li class="page-item"><a class="page-link" href="#">次へ</a></li>
 				</ul>
 			</nav>
-		</div>
+		
 
-		<div class="row">
-			<div class="mx-auto">
-				<div style="width: 85rem; background-color: #f6f6f6; border: 1px solid #dee2e6;">
+			<div class="row">
+				<div class="mx-auto">
 				
-					<div class="text-nowrap table-responsive">
-						<table class="table table-hover" style="cursor: pointer;">
-							<tbody>
-	
-								<tr class="bg-white text-center">
-									<th>No.</th>
-									<th>企業名</th>
-									<th>募集職種</th>
-									<th>言語</th>
-									<th class="text-left">所在地</th>
-									<th>電話番号</th>
-									<th class="text-left">事業内容</th>
-									<th>取得日????</th>
-									<th>更新日????</th>
-								</tr>
-								
-								<tr th:each="job,status:${jobList}">
-									<td th:text="${status.count}+.">1</td>
-									<td>
-										<a th:href="${job.url}" th:text="${job.companyName}" target="_blank" rel="noopener noreferrer">
-											会社A
-										</a>
-									</td>
-									<td th:text="${job.jobType}">システム開発</td>
-									<td th:text="${job.codingLanguages}">Java</td>
-									<td th:text="${job.location}">東京</td>
-									<td th:text="${job.phoneNumber}">00-1111-2222</td>
-									<td th:text="${job.businessDetails}">IoTサービス</td>
-									<td>2020/10/01</td>
-									<td>2020/10/11</td>
-								</tr>
-	
-							</tbody>
-						</table>
+					<div style="background-color: #f6f6f6; border: 1px solid #dee2e6;">
+							<table class="table table-bordered table-hover" style="table-layout: fixed;">
+								<tbody>
+		
+									<tr class="bg-white text-center">
+										<th>No.</th>
+										<th>企業名</th>
+										<th>募集職種</th>
+										<th>所在地</th>
+										<th>電話番号</th>
+										<th>事業内容</th>
+										<th>掲載</th>
+									</tr>
+									
+									<tr th:each="job,status:${jobList}">
+										<td class="text-nowrap overflow-hidden" th:text="${status.count}+.">1</td>
+										<td class="text-nowrap overflow-hidden" style="cursor: pointer; position: relative;">
+											<a class="stretched-link" th:href="${job.url}" th:text="${job.companyName}" target="_blank" rel="noopener noreferrer">
+												会社A
+											</a>
+										</td>
+										<td class="text-nowrap overflow-hidden"th:text="${job.jobType}">システム開発</td>
+										<td class="text-nowrap overflow-hidden" th:text="${job.location}">東京</td>
+										<td class="text-nowrap overflow-hidden" th:text="${job.phoneNumber}">000-1111-2222</td>
+										<td class="text-nowrap overflow-hidden" th:text="${job.businessDetails}">IoTサービス</td>
+										<td class="text-nowrap overflow-hidden">2020/10/01</td>
+									</tr>
+		
+								</tbody>
+							</table>
+						
 					</div>
-					
 				</div>
+				
 			</div>
 		</div>
 	</div>
