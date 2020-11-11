@@ -45,6 +45,7 @@ public class JobListController {
 		if(Objects.isNull(page)) {
 			page = 1;
 		}
+		model.addAttribute("page",page);
 		
 		String codingLanguage = null;
 		switch (codingLanguageNumber){
@@ -124,6 +125,8 @@ public class JobListController {
 		}
 		model.addAttribute("siteNumber",siteNumber);
 		
+		Integer totalPage = enService.countTotalPage(codingLanguage,50);
+		model.addAttribute("totalPage",totalPage);
 	    model.addAttribute("jobList",jobList);
 		return "job/job_list";
 	}	

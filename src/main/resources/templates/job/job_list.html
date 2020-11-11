@@ -61,17 +61,32 @@
 					
 			</form>
 			
-			<nav aria-label="ページ送りの実例">
+			<nav aria-label="ページング">
 				<ul class="pagination">
-					<!-- <li class="page-item"><a class="page-link" th:href="#">前へ</a></li> -->
-					<!-- <li class="page-item"><a class="page-link" th:href="#">1</a></li> -->
-					<!-- <li class="page-item"><a class="page-link" th:href="#">2</a></li> -->
-					<!-- <li class="page-item"><a class="page-link" th:href="#">3</a></li> -->
-					<li class="page-item"><a class="page-link" th:href="@{/job-list/to-job-list(page=2)}">次へ</a></li>
-					                      <!-- <a th:href="@{/searchItem(page=${status.count},name=${name},element=${element})}">1</a> -->
+					<li class="page-item" th:if="${0 &lt; page-1 and page-1 &lt; totalPage+1}">
+						<a class="page-link" th:text="前へ" th:href="@{/job-list/to-job-list(page=${page-1}, siteNumber=${siteNumber}, codingLanguageNumber=${codingLanguageNumber})}">1</a>
+					</li>
+					<li class="page-item" th:if="${0 &lt; page-2 and page-2 &lt; totalPage+1}">
+						<a class="page-link" th:text=${page-2} th:href="@{/job-list/to-job-list(page=${page-2}, siteNumber=${siteNumber}, codingLanguageNumber=${codingLanguageNumber})}">1</a>
+					</li>
+					<li class="page-item" th:if="${0 &lt; page-1 and page-1 &lt; totalPage+1}">
+						<a class="page-link" th:text=${page-1} th:href="@{/job-list/to-job-list(page=${page-1}, siteNumber=${siteNumber}, codingLanguageNumber=${codingLanguageNumber})}">1</a>
+					</li>
+					<li class="page-item" th:if="${0 &lt; page and page &lt; totalPage+1}">
+						<a class="page-link" th:text=${page} th:href="@{/job-list/to-job-list(page=${page}, siteNumber=${siteNumber}, codingLanguageNumber=${codingLanguageNumber})}">1</a>
+					</li>
+					<li class="page-item" th:if="${0 &lt; page+1 and page+1 &lt; totalPage+1}">
+						<a class="page-link" th:text=${page+1} th:href="@{/job-list/to-job-list(page=${page+1}, siteNumber=${siteNumber}, codingLanguageNumber=${codingLanguageNumber})}">次へ</a>
+					</li>
+					<li class="page-item" th:if="${0 &lt; page+2 and page+2 &lt; totalPage+1}">
+						<a class="page-link" th:text=${page+2} th:href="@{/job-list/to-job-list(page=${page+2}, siteNumber=${siteNumber}, codingLanguageNumber=${codingLanguageNumber})}">次へ</a>
+					</li>
+					<li class="page-item" th:if="${0 &lt; page+1 and page+1 &lt; totalPage+1}">
+						<a class="page-link" th:text="次へ" th:href="@{/job-list/to-job-list(page=${page+1}, siteNumber=${siteNumber}, codingLanguageNumber=${codingLanguageNumber})}">次へ</a>
+					</li>
 				</ul>
 			</nav>
-
+			
 			<div class="row">
 				<div class="mx-auto">
 				
