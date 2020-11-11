@@ -20,36 +20,38 @@
 			
 				<div class="form-row text-left">
 					<div class="form-group col-md-6">
-						<label for="siteName">求人サイト</label> 
- 						<select name=”siteNumber” id="siteName" class="form-control">
-							<option id=”en”         value=”1”>エン転職</option>
-							<option id=”careertrek” value=”2”>キャリトレ</option>
-							<option id=”geekly”     value=”3”>Geekly</option>
-							<option id=”green”      value=”4”>Green</option>
-							<option id=”type”       value=”5”>type</option>
-							<option id=”doda”       value=”6”>doda</option>
-							<option id=”mynavi”     value=”7”>マイナビ転職</option>
-							<option id=”rikunabi”   value=”8”>リクナビNEXT</option>
+						<label>求人サイト</label> 
+ 						<select name="siteNumber" class="form-control">
+							<option th:value="${siteNumber}" th:text="${siteName}"></option>
+							<option id="careertrek" value="1">エン転職</option>
+							<option id="careertrek" value="2">キャリトレ</option>
+							<option id="geekly"     value="3">Geekly</option>
+							<option id="green"      value="4">Green</option>
+							<option id="type"       value="5">type</option>
+							<option id="doda"       value="6">doda</option>
+							<option id="mynavi"     value="7">マイナビ転職</option>
+							<option id="rikunabi"   value="8">リクナビNEXT</option>
 						</select>
 					</div>
 					
 					<div class="form-group col-md-6">
-						<label for="codingLanguages">言語</label> 
-						<select name=”codingLanguageNumber” id="codingLanguages" class="form-control">
-							<option id=”java”       value=”1”>Java</option>
-							<option id=”ruby”       value=”2”>Ruby</option>
-							<option id=”php”        value=”3”>PHP</option>
-							<option id=”c++”        value=”4”>C++</option>
-							<option id=”c#”         value=”5”>C#</option>
-							<option id=”cobol”      value=”6”>COBOL</option>
-							<option id=”go”         value=”7”>Go</option>
-							<option id=”kotlin”     value=”8”>Kotlin</option>
-							<option id=”perl”       value=”9”>Perl</option>
-							<option id=”python”     value=”10”>Python</option>
-							<option id=”r”          value=”11”>R</option>
-							<option id=”scala”      value=”12”>Scala</option>
-							<option id=”swift”      value=”13”>Swift</option>
-							<option id=”typeScript” value=”14”>TypeScript</option>
+						<label>言語</label> 
+						<select name="codingLanguageNumber" class="form-control">
+							<option th:value="${codingLanguageNumber}" th:text="${codingLanguageName}"></option>
+							<option id="java"       value="1">Java</option>
+							<option id="ruby"       value="2">Ruby</option>
+							<option id="php"        value="3">PHP</option>
+							<option id="c++"        value="4">C++</option>
+							<option id="c#"         value="5">C#</option>
+							<option id="cobol"      value="6">COBOL</option>
+							<option id="go"         value="7">Go</option>
+							<option id="kotlin"     value="8">Kotlin</option>
+							<option id="perl"       value="9">Perl</option>
+							<option id="python"     value="10">Python</option>
+							<option id="r"          value="11">R</option>
+							<option id="scala"      value="12">Scala</option>
+							<option id="swift"      value="13">Swift</option>
+							<option id="typeScript" value="14">TypeScript</option>
 						</select>
 					</div>
 				</div>
@@ -58,17 +60,17 @@
 					<div class="btn btn-primary">CSV出力</div>
 					
 			</form>
-
+			
 			<nav aria-label="ページ送りの実例">
 				<ul class="pagination">
-					<li class="page-item disabled"><a class="page-link" href="#">前へ</a></li>
-					<li class="page-item active"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">次へ</a></li>
+					<!-- <li class="page-item"><a class="page-link" th:href="#">前へ</a></li> -->
+					<!-- <li class="page-item"><a class="page-link" th:href="#">1</a></li> -->
+					<!-- <li class="page-item"><a class="page-link" th:href="#">2</a></li> -->
+					<!-- <li class="page-item"><a class="page-link" th:href="#">3</a></li> -->
+					<li class="page-item"><a class="page-link" th:href="@{/job-list/to-job-list(page=2)}">次へ</a></li>
+					                      <!-- <a th:href="@{/searchItem(page=${status.count},name=${name},element=${element})}">1</a> -->
 				</ul>
 			</nav>
-		
 
 			<div class="row">
 				<div class="mx-auto">

@@ -12,7 +12,7 @@ import com.example.domain.Job;
 import com.example.service.job.EnService;
 
 /**
- * ユーザーのログイン時のコントローラー.
+ * 求人一覧のコントローラー.
  * 
  * @author oyamadakenji
  *
@@ -30,10 +30,7 @@ public class JobListController {
 	 * @return 求人一覧
 	 */
 	@RequestMapping("/to-job-list")
-	public String toJobList(Integer siteNumber,Integer codingLanguageNumber, Model model) {
-		
-		System.out.println(siteNumber);
-		System.out.println(codingLanguageNumber);
+	public String toJobList(Integer siteNumber,Integer codingLanguageNumber, Integer page, Model model) {
 		
 		List<Job> jobList = null;
 		
@@ -43,6 +40,10 @@ public class JobListController {
 
 		if(Objects.isNull(codingLanguageNumber)) {
 			codingLanguageNumber = 1;
+		}
+		
+		if(Objects.isNull(page)) {
+			page = 1;
 		}
 		
 		String codingLanguage = null;
@@ -90,13 +91,17 @@ public class JobListController {
 			  codingLanguage = "TypeScript";
 			  break;
 		}
+		model.addAttribute("codingLanguageName",codingLanguage);
+		model.addAttribute("codingLanguageNumber",codingLanguageNumber);
 
 		switch (siteNumber){
 		  case 1:
-			  jobList = enService.searchJob(codingLanguage);
+			  jobList = enService.searchJob(codingLanguage,page);
+			  model.addAttribute("siteName","エン転職");
 			  break;
 		  case 2:
-			  System.out.println("2");
+			  jobList = enService.searchJob(codingLanguage,page);
+			  model.addAttribute("siteName","キャリトレ");
 			  break;
 		  case 3:
 			  System.out.println("3");
@@ -117,6 +122,7 @@ public class JobListController {
 			    System.out.println("8");
 			    break;
 		}
+		model.addAttribute("siteNumber",siteNumber);
 		
 	    model.addAttribute("jobList",jobList);
 		return "job/job_list";

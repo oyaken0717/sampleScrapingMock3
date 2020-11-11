@@ -16,14 +16,17 @@ import com.example.domain.Job;
 @Transactional
 public class EnService {
 	
-	public List<Job> searchJob(String codingLanguage) {
+	public List<Job> searchJob(String codingLanguage, Integer page) {
 		
 		Job job;
 		List<Job> jobList = new ArrayList<>();
 		
 		try {
 	    	String siteUrl = "https://employment.en-japan.com/search/search_list/?occupation_back=400000&caroute=0701&occupation=401000_401500_402000_402500_403000_403500_404000_404500_405000_405500_409000&areaid=2&keywordtext="+codingLanguage;
-	    	System.out.println(siteUrl);
+	    	if (page>=2) {
+	    		siteUrl = "https://employment.en-japan.com/search/search_list/?keywordtext="+codingLanguage+"&areaid=2&occupation=401000_401500_402000_402500_403000_403500_404000_404500_405000_405500_409000&pagenum="+page+"&aroute=0&arearoute=1&caroute=0701";
+			}
+	    	
 	    	Document documents = Jsoup.connect(siteUrl).get();
 
 	        String siteName = "エン転職";
@@ -36,10 +39,10 @@ public class EnService {
 	        
 	        Elements businessDetails = documents.select(".dataArea .dataList");
 	        Elements url = documents.select(".buttonArea .toDesc");
-	        Elements published = documents.select(".listDate");	        
+	        String firstUrl = "https://employment.en-japan.com"; 
+	        String latterUrl = "&aroute=0&caroute=0701"; 
 	    	
-	    	String firstUrl = "https://employment.en-japan.com"; 
-	    	String latterUrl = "&aroute=0&caroute=0701"; 
+	    	Elements published = documents.select(".listDate");	        
 	    	
 	        for (int i = 0; i < companyName.size(); i++) {
 	        	job = new Job();
